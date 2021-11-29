@@ -16,4 +16,16 @@ describe('ceil.js test', ()=>{
     it('Second parameter is any type but not number', ()=>{
         expect(ceil(6040, "two")).toThrow(Error);
     });
+
+    it('4.006 -1', ()=>{
+        expect(ceil(4.006, -1)).toBe(10);
+    });
+
+    it('4.006 -1', ()=>{
+        expect(ceil(-4.006, -1)).toBe(0);
+    });
+
+    it('4.006 2', ()=>{
+        expect(ceil(4.006, 2)).toBe(4.01);
+    });
 })
