@@ -37,9 +37,18 @@ describe('slice.js test', () => {
         expect(slice(array,2,10)).toThrow(Error);
     });
 
-    
-    it('what if both start and end index are out of range', () => {
+    it('what if start index is a larger than end (positive integers)', () => {
         let array = [1, 2, 3, 4]
-        expect(slice(array,-10,10)).toThrow(Error);
+        expect(slice(array,3,2)).toThrow(Error);
+    });
+
+    it('what if start index is a larger than end (negative integers)', () => {
+        let array = [1, 2, 3, 4]
+        expect(slice(array,-1,-2)).toThrow(Error);
+    });
+
+    it('what if index is set to Infinity', () => {
+        let array = [1, 2, 3, 4]
+        expect(slice(array,Infinity)).toThrow(Error);
     });
 });
