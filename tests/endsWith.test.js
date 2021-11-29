@@ -5,43 +5,50 @@ expect.extend(matchers);
 
 describe('endWith.js test', () => {
     it('what if no position is given and target is at the end of the string', () => {
-        expect(endsWith('abc', 'c')).toBeTruthy();
+        expect(endsWith('abc', 'c')).toBe(true);
     });
 
     it('what if no position is given and target isn\'t at the end of the string', () => {
-        expect(endsWith('abc', 'b')).toBeFalsy();
+        expect(endsWith('abc', 'b')).toBe(false);
     });
 
-    
-    it('what if position is undefined target is at the end of the string', () => {
-        expect(endsWith('abc', 'c',undefined)).toBeTruthy();
+    it('what if position is undefined and target is at the end of the string', () => {
+        expect(endsWith('abc', 'c', undefined)).toBe(true);
     });
 
-    it('what if position is undefined target isn’t at the end of the string true', () => {
-        expect(endsWith('abc', 'b',undefined)).toBeFalsy();
+    it('what if position is undefined and target isn’t at the end of the string', () => {
+        expect(endsWith('abc', 'b', undefined)).toBe(false);
     });
 
     it('what if position is before the target\'s match in string ', () => {
-        expect(endsWith('abc', 'c',2)).toBeFalsy();
+        expect(endsWith('abcdef', 'de', 3)).toBe(false);
     });
 
     it('what if position is after the target\'s match in string', () => {
-        expect(endsWith('abc', 'b',3)).toBeFalsy();
+        expect(endsWith('abcdef', 'de', 6)).toBe(false);
+    });
+
+    it('what if position cuts target\'s match in string in half', () => {
+        expect(endsWith('abcdef', 'de', 4)).toBe(false);
+    });
+
+    it('what if position is on top of match in string (target = string)', () => {
+        expect(endsWith('abcdef', 'de', 5)).toBe(true);
     });
     
     it('what if target is not of type String despite it having a match in string', () => {
-        expect(endsWith('123', 3, 3)).toBeFalsy();
+        expect(endsWith('123', 3)).toBe(false);
     });
         
     it('what if string is not a String', () => {
-        expect(endsWith(123, 3, 3)).toBeFalsy();
+        expect(endsWith(123, 3)).toBe(false);
     });
 
     it('what if position is not a Number', () => {
-        expect(endsWith('123', '3', '3')).toBeFalsy();
+        expect(endsWith('123', '2', '2')).toBe(false);
     });
 
     it('what if position is out of range ', () => {
-        expect(endsWith('123', '3', 5)).toBeFalsy();
+        expect(endsWith('123', '3', 5)).toBe(false);
     });
 });

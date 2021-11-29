@@ -6,7 +6,7 @@ describe('ceil.js test', ()=>{
     });
 
     it('First parameter is any type but not number', ()=>{
-        expect(ceil("four")).toThrow(Error);
+        expect(ceil("four")).toBe(NaN);
     });
 
     it('Second parameter is number', ()=>{
@@ -14,7 +14,7 @@ describe('ceil.js test', ()=>{
     });
 
     it('Second parameter is any type but not number', ()=>{
-        expect(ceil(6040, "two")).toThrow(Error);
+        expect(ceil(6040, "two")).toBe(NaN);
     });
 
     it('4.006 -1', ()=>{
