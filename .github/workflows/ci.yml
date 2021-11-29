@@ -31,6 +31,6 @@ jobs:
     - run: npm test isEmpty.test.js
     - run: npm run coveralls
     - name: Coveralls
-      uses: coverallsapp/github-action@main
+      uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
