@@ -9,19 +9,19 @@ describe('clamp.js test', () => {
     });
 
     it('what if the number is lower than the lower bound  (-10, -5, 5)', () => {
-        expect(clamp(-10, -5, 5)).toEqual(5);
+        expect(clamp(-10, -5, 5)).toEqual(-5);
     });
 
-    it('what if lower is the same value as upper  (5, 5, 5)', () => {
-        expect(clamp(5, 5, 5)).toEqual(5);
+    it('what if lower is the same value as upper  (4, 5, 5)', () => {
+        expect(clamp(4, 5, 5)).toEqual(5);
     });
 
-    it('what if lower/upper are -Infinity/Infinity   (Infinity, 5, 5)', () => {
-        expect(clamp(Infinity, -5, 5)).toEqual(5);
+    it('what if lower/upper are -Infinity/Infinity   (5, -Infinity, Infinity)', () => {
+        expect(clamp(5, -Infinity, Infinity)).toEqual(5);
     });
 
-    it('what if lower is -Infinity and number is lower than upper   (0, -Infinity, 5)', () => {
-        expect(clamp(0, -Infinity, 5)).toEqual(0);
+    it('what if lower is -Infinity and number is lower than upper   (2, -Infinity, 5)', () => {
+        expect(clamp(2, -Infinity, 5)).toEqual(2);
     });
 
     it('what if lower is -Infinity and number is higher than upper  (10, -Infinity, 5)', () => {
@@ -29,15 +29,31 @@ describe('clamp.js test', () => {
     });
 
     it('what if upper is Infinity and number is lower than lower  (-15, -5, Infinity)', () => {
-        expect(clamp(-15, -5, Infinity)).toEqual(-15);
+        expect(clamp(-15, -5, Infinity)).toEqual(-5);
     });
     
-    it('what if upper is Infinity and number is higher than lower  (0, -5, Infinity)', () => {
-        expect(clamp(0, -5, Infinity)).toEqual(0);
+    it('what if upper is Infinity and number is higher than lower  (2, -5, Infinity)', () => {
+        expect(clamp(2, -5, Infinity)).toEqual(2);
     });
 
     it('what if ints or decimals are used (0.5, -5, 5)', () => {
         expect(clamp(0.5, -5, 5)).toEqual(0.5);
+    });
+
+    it('what if lower is a higher value than upper (2, 5, -5)', () => {
+        expect(clamp(2, 5, -5)).toEqual(2);
+    });
+
+    it('what if number is not a number ("two", -5, 5)', () => {
+        expect(clamp("two", -5, 5)).toEqual(NaN);
+    });
+
+    it('what if lower is not a number (2, "five", -5)', () => {
+        expect(clamp(2, "five", 5)).toEqual(2);
+    });
+
+    it('what if upper is not a number (2, -5, "five")', () => {
+        expect(clamp(2, -5, "five")).toEqual(2);
     });
 });
 
