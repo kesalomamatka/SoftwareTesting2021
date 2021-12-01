@@ -36,7 +36,7 @@ describe('clamp.js test', () => {
         expect(clamp(2, -5, Infinity)).toEqual(2);
     });
 
-    it('what if decimals are used (0.5, -5.5, 5.5)', () => {
+    it('what if decimals are used (10.5, -5.5, 5.5)', () => {
         expect(clamp(10.5, -5.5, 5.5)).toEqual(5.5);
     });
 });

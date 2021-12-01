@@ -1,6 +1,6 @@
 import toString from '../src/toString'
 
-describe('isEmpty.js test', ()=>{
+describe('toString.js test', ()=>{
     it('value = null', ()=>{
         expect(toString(null)).toBe('')
     });
