@@ -8,7 +8,7 @@ describe('chunk.js test', ()=>{
     });
 
     it('Array can\'t be split evenly', ()=>{
-        expect(chunk(['a', 'b', 'c', 'd'], 3)).toIncludeSameMembers( [['a', 'b', 'c'], ['d']])
+        expect(chunk(['a', 'b', 'c', 'd'], 3)).toIncludeSameMembers([['a', 'b', 'c'], ['d']])
     });
         
     it('Size is greater than array length', ()=>{
@@ -17,5 +17,9 @@ describe('chunk.js test', ()=>{
 
     it('Array is empty', ()=>{
         expect(chunk([], 3)).toIncludeSameMembers([])
+    });
+
+    it('Size type is float', ()=>{
+        expect(chunk(['a', 'b', 'c', 'd'], 3.2)).toIncludeSameMembers([['a', 'b', 'c'], ['d']])
     });
 })
