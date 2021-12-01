@@ -39,14 +39,6 @@ describe('endWith.js test', () => {
     it('what if target is not of type String despite it having a match in string', () => {
         expect(endsWith('123', 3)).toBe(false);
     });
-        
-    it('what if string is not a String', () => {
-        expect(endsWith(123, 3)).toBe(false);
-    });
-
-    it('what if position is not a Number', () => {
-        expect(endsWith('123', '2', '2')).toBe(false);
-    });
 
     it('what if position is out of range ', () => {
         expect(endsWith('123', '3', 5)).toBe(false);

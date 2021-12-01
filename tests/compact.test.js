@@ -23,8 +23,4 @@ describe('compact.js test', () => {
     it('what if array has both truthy and falsy values', () => {
         expect(compact([0, 1, false, 2, '', 3])).toEqual([1, 2, 3]);
     });
-
-    it('what if array is not an Array', () => {
-        expect(() => {compact(4)}).toThrow(TypeError);
-    });
 });
