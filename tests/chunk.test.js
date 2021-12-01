@@ -15,6 +15,14 @@ describe('chunk.js test', ()=>{
         expect(chunk(['a', 'b', 'c', 'd'], 5)).toIncludeSameMembers(['a', 'b', 'c', 'd'])
     });
 
+    it('Size is of length 1', ()=>{
+        expect(chunk(['a', 'b', 'c', 'd'], 1)).toIncludeSameMembers([['a'], ['b'], ['c'], ['d']])
+    });
+
+    it('Size is the exact length of array', ()=>{
+        expect(chunk(['a', 'b', 'c', 'd'], 4)).toIncludeSameMembers([['a', 'b', 'c', 'd']])
+    });
+
     it('Array is empty', ()=>{
         expect(chunk([], 3)).toIncludeSameMembers([])
     });
