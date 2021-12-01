@@ -12,14 +12,9 @@ describe('slice.js test', () => {
         expect(slice(array, 2)).toIncludeSameMembers([3, 4]);
     });
 
-    it('what if no end index is given', () => {
-        let array = [1, 2, 3, 4]
-        expect(slice(array, 0, 2)).toIncludeSameMembers([1, 2]);
-    });
-
     it('what if no start index is given', () => {
         let array = [1, 2, 3, 4]
-        expect(slice(array, undefined, -1)).toIncludeSameMembers([1, 2, 3, 4]);
+        expect(slice(array, undefined, -1)).toIncludeSameMembers([1, 2, 3]);
     });
 
     it('what if start and end index are the same', () => {
@@ -47,6 +42,7 @@ describe('slice.js test', () => {
     it('what if both start and end index are out of range', () => {
         let array = [1, 2, 3, 4]
         expect(slice(array, 9, 10)).toIncludeSameMembers([]);
+        expect(slice(array, -10, -9)).toIncludeSameMembers([]);
     });
 
     it('what if start index is a larger than end (positive integers)', () => {
@@ -71,7 +67,7 @@ describe('slice.js test', () => {
 
     it('what if array is not an Array or a String', () => {
         let array = 1234
-        expect(slice(array, 2)).toIncludeSameMembers([]);
+        expect(() => {slice(array, 2)}).toThrow(Error);
     });
 
     it('what if indices are not Numbers', () => {

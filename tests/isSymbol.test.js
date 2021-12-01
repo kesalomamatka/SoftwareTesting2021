@@ -5,30 +5,30 @@ expect.extend(matchers);
 
 describe('isSymbol.js test', () => {
     it('value = Symbol()', () => {
-        expect(isSymbol(Symbol())).toBeTruthy();
+        expect(isSymbol(Symbol())).toBe(true);
     });
 
     it('value = Symbol.iterator', () => {
-        expect(isSymbol(Symbol.iterator)).toBeTruthy();
+        expect(isSymbol(Symbol.iterator)).toBe(true);
     });
 
     it('value = String()', () => {
-        expect(isSymbol("string")).toBeFalsy();
+        expect(isSymbol("string")).toBe(false);
     });
 
     it('value = Number()', () => {
-        expect(isSymbol(123)).toBeFalsy();
+        expect(isSymbol(123)).toBe(false);
     });
 
     it('value = null', () => {
-        expect(isSymbol(null)).toBeFalsy();
+        expect(isSymbol(null)).toBe(false);
     });
 
     it('value = undefined', () => {
-        expect(isSymbol(undefined)).toBeFalsy();
+        expect(isSymbol(undefined)).toBe(false);
     });
 
     it('value = Boolean', () => {
-        expect(isSymbol(false)).toBeFalsy();
+        expect(isSymbol(false)).toBe(false);
     });
 });
