@@ -1,31 +1,43 @@
 import ceil from '../src/ceil'
 
 describe('ceil.js test', ()=>{
-    it('First parameter is numbe', ()=>{
+    it('Only the first parameter is given', ()=>{
         expect(ceil(4.006)).toBe(5)
     });
 
-    it('First parameter is any type but not number', ()=>{
-        expect(ceil("four")).toBe(NaN);
-    });
-
-    it('Second parameter is number', ()=>{
+    it('Both first and second parameters are given', ()=>{
         expect(ceil(6040, -2)).toBe(6100);
     });
 
-    it('Second parameter is any type but not number', ()=>{
-        expect(ceil(6040, "two")).toBe(NaN);
+    it('Positive number with a negative precision of 1', ()=>{
+        expect(ceil(6140, -1)).toBe(7000);
     });
 
-    it('4.006 -1', ()=>{
-        expect(ceil(4.006, -1)).toBe(10);
+    it('Negative number with a positive precision of 1', ()=>{
+        expect(ceil(-4.004, 1)).toBe(-4);
     });
 
-    it('4.006 -1', ()=>{
-        expect(ceil(-4.006, -1)).toBe(0);
+    it('Negative number with a negative precision of 1', ()=>{
+        expect(ceil(-6140, -1)).toBe(-6000);
     });
 
-    it('4.006 2', ()=>{
-        expect(ceil(4.006, 2)).toBe(4.01);
+    it('Positive number with a positive precision of 1', ()=>{
+        expect(ceil(4.004, 1)).toBe(4.1);
+    });
+
+    it('Positive number with a negative precision of 2', ()=>{
+        expect(ceil(6140, -2)).toBe(6200);
+    });
+
+    it('Negative number with a positive precision of 2', ()=>{
+        expect(ceil(-4.013, 2)).toBe(-4.01);
+    });
+
+    it('Negative number with a negative precision of 2', ()=>{
+        expect(ceil(-6140, -2)).toBe(-6100);
+    });
+
+    it('Positive number with a positive precision of 2', ()=>{
+        expect(ceil(4.004, 2)).toBe(4.01);
     });
 })
